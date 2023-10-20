@@ -1,5 +1,5 @@
 FROM python:3.9-alpine3.13
-LABEL mauntainer="niazimahrab"
+LABEL maintainer="niazimahrab"
 
 ENV PYTHONUNBUFFERED 1
 
@@ -13,6 +13,10 @@ RUN python -m venv /py && \
     /py/bin/pip install -r /tmp/requirements.txt && \
     rm -rf /tmp &&\
     adduser \
-        --disabled-password \
+        --disabled-password \ 
         --no-create-home \
         django-user
+
+ENV PATH="/py/bin:$PATH"
+
+USER django-user
