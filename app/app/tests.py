@@ -5,4 +5,4 @@ class CalscTest(SimpleTestCase):
     def test_add(self):
         res = caltest.add(2,3)
         
-        self.assertEqual(res,10)
+        self.assertEqual(res, 5)
