@@ -25,6 +25,8 @@ class UserAdmin(BaseUserAdmin):
         (_('Important dates'), {'fields': ('last_login',)}),
     )
     readonly_fields = ('last_login',)
+    
+    #### USER CREATION PAGE ####
     add_fieldsets = (
         (None, 
             {
