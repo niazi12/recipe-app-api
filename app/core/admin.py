@@ -1,16 +1,17 @@
-from django.contrib import admin 
+from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.utils.translation import gettext as _
 
 from core import models
 # Register your models here.
 
+
 class UserAdmin(BaseUserAdmin):
     """Define the admin page"""
     ordering = ['id']
     list_display = ['email', 'name']
     fieldsets = (
-        (None, {'fields': ('email','password')}),
+        (None, {'fields': ('email', 'password')}),
         (
             _('Permissions'),
             {
@@ -25,23 +26,23 @@ class UserAdmin(BaseUserAdmin):
         (_('Important dates'), {'fields': ('last_login',)}),
     )
     readonly_fields = ('last_login',)
-    
-    #### USER CREATION PAGE ####
+
+# USER CREATION PAGE
     add_fieldsets = (
-        (None, 
+        (None,
             {
                 'classes': ('wide',),
                 'fields': (
-                    'email', 
-                    'password1', 
+                    'email',
+                    'password1',
                     'password2',
                     'name',
                     'is_active',
                     'is_staff',
                     'is_superuser',
                 )
-            }
-        ),
+            }),
     )
+
 
 admin.site.register(models.User, UserAdmin)
